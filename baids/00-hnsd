@@ -1,0 +1,29 @@
+#!/bin/bash
+
+function hnsd-start() {
+
+  if [ ! "$(docker inspect --type container hnsd-resolver -f ok)" == "ok" ]
+  then
+    docker run -d \
+      --name hnsd-resolver \
+      --restart unless-stopped \
+      -p 53:53 \
+      rcmorano/hnsd \
+        -r 0.0.0.0:53
+  else
+    docker start hnsd-resolver
+  fi
+
+}
+
+function hnsd-stop() {
+
+  docker stop hsnd-resolver
+
+}
+
+function hnsd-destroy() {
+
+  docker rm -f hnsd-resolver
+
+}

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+function docker-hnsd-build() {
+
+  docker build -t rcmorano/hnsd .
+
+}
