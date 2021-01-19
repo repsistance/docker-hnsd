@@ -7,7 +7,7 @@ function hnsd-start() {
     docker run -d \
       --name hnsd-resolver \
       --restart unless-stopped \
-      -p 53:53 \
+      -p 53:53/udp \
       rcmorano/hnsd \
         -r 0.0.0.0:53
   else
